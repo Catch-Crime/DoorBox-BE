@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: local
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${LOCAL_DB_URL}
+    username: ${LOCAL_DB_USERNAME}
+    password: ${LOCAL_DB_PW}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 500
+
+  security:
+    oauth2:
+      provider:
+        kakao:
+
+
+
+jwt:
+  secret: ${JWT_SECRET}
+  time:
+    access: 3600000      # 1 hour (ms)
+    refresh: 2592000000  # 30 days (ms)
