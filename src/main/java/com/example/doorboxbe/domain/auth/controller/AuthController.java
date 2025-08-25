@@ -4,6 +4,7 @@ import com.example.doorboxbe.domain.auth.dto.request.AuthRequestDTO;
 import com.example.doorboxbe.domain.auth.dto.response.AuthResponseDTO;
 import com.example.doorboxbe.domain.auth.service.AuthService;
 import com.example.doorboxbe.domain.auth.service.KakaoVerifier;
+import com.example.doorboxbe.global.apiPayload.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class AuthController {
 
 
     @PostMapping("/api/oauth2/login/kakao")
-    public ResponseEntity<AuthResponseDTO.LoginResponse> kakaoLogin(@RequestBody AuthRequestDTO.LoginRequest request) {
+    public ApiResponse<AuthResponseDTO.LoginResponse> kakaoLogin(@RequestBody AuthRequestDTO.LoginRequest request) {
 
         System.out.println("[AuthController] 요청 들어옴, idToken = " + request.getIdToken());
 
@@ -29,6 +30,7 @@ public class AuthController {
         AuthResponseDTO.LoginResponse response = authService.login(request);
         System.out.println("[AuthController] login 처리 완료");
 
-        return ResponseEntity.ok(response);
+        return ApiResponse.onSuccess(response);
+
     }
 }
