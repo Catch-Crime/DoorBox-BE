@@ -1,6 +1,10 @@
 spring:
   profiles:
     active: local
+  cloud:
+    aws:
+      s3:
+        enabled: false
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,9 +22,10 @@ spring:
 
   security:
     oauth2:
-      provider:
-        kakao:
-
+      kakao:
+        public-key-url: https://kauth.kakao.com/.well-known/jwks.json
+        iss: https://kauth.kakao.com
+        app-key: ${KAKAO_APP_KEY}
 
 
 jwt:
@@ -28,3 +33,9 @@ jwt:
   time:
     access: 3600000      # 1 hour (ms)
     refresh: 2592000000  # 30 days (ms)
+
+s3:
+  bucket: ${AWS_BUCKET}
+  region: ap-northeast-2
+  access-key: ${AWS_ACCESS_KEY}
+  secret-key: ${AWS_SECRET_KEY}

@@ -5,6 +5,7 @@ import com.example.doorboxbe.global.apiPayload.code.status.error.TokenErrorStatu
 import com.example.doorboxbe.global.apiPayload.exception.TokenException;
 import com.example.doorboxbe.global.security.data.JwtConfigData;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,8 @@ public class JwtTokenUtil {
     private final Duration refreshExpiration;
 
     public JwtTokenUtil(JwtConfigData jwtConfigData) {
-        this.secretKey = Keys.hmacShaKeyFor(jwtConfigData.getSecret().getBytes(StandardCharsets.UTF_8));
+        byte[] keyBytes = Decoders.BASE64.decode(jwtConfigData.getSecret()); // Base64로 받은 경우
+        this.secretKey = Keys.hmacShaKeyFor(keyBytes);
         this.accessExpiration = Duration.ofMillis(jwtConfigData.getTime().getAccess());
         this.refreshExpiration = Duration.ofMillis(jwtConfigData.getTime().getRefresh());
     }
