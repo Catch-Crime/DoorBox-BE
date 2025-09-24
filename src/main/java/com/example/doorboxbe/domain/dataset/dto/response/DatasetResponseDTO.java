@@ -41,13 +41,12 @@ public class DatasetResponseDTO {
             return PhotoDetectionResponse.builder()
                     .day(dataset.getDay())
                     .time(dataset.getTime())
-                    .emotion(dataset.getDetectionResults().getEmotion())
-                    .hasAccessory(dataset.getDetectionResults().hasAccessory())
-                    .gender(dataset.getDetectionResults().getGender())
-                    .ageGroup(dataset.getDetectionResults().getAgeGroup())
+                    .emotion(dataset.getEmotion())
+                    .hasAccessory(dataset.getHasAccessory())
+                    .gender(dataset.getGender())
+                    .ageGroup(dataset.getAgeGroup())
                     .imageKey(dataset.getImageKey())
                     .build();
         }
     }
-
 }

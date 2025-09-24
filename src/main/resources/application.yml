@@ -39,3 +39,4 @@ s3:
   region: ap-northeast-2
   access-key: ${AWS_ACCESS_KEY}
   secret-key: ${AWS_SECRET_KEY}
+  base-prefix: home-1/cam-frontdoor
