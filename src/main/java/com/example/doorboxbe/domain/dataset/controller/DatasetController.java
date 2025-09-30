@@ -4,7 +4,6 @@ import com.example.doorboxbe.domain.dataset.dto.response.DatasetResponseDTO;
 import com.example.doorboxbe.domain.dataset.service.DatasetService;
 import com.example.doorboxbe.global.apiPayload.ApiResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,8 +19,11 @@ public class DatasetController {
     private final DatasetService datasetService;
 
     @GetMapping
-    public ApiResponse<DatasetResponseDTO.DatasetResponse> datasetsByDate(@RequestParam LocalDate date) {
-        DatasetResponseDTO.DatasetResponse response = datasetService.listForDate(date);
+    public ApiResponse<DatasetResponseDTO.DatasetResponse> datasetsByDate(
+            @RequestParam LocalDate date,
+            @RequestParam Long cursor,
+            @RequestParam int size) {
+        DatasetResponseDTO.DatasetResponse response = datasetService.listForDate(date, cursor, size);
 
         return ApiResponse.onSuccess(response);
     }

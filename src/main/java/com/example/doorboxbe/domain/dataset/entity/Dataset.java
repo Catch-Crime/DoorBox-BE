@@ -20,7 +20,7 @@ public class Dataset {
     private String time;
     private String emotion;
 
-    @Column(name = "has_accessoru")
+    @Column(name = "has_accessory")
     private Boolean hasAccessory;
     private String gender;
 

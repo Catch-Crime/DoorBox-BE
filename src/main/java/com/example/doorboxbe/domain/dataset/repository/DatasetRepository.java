@@ -1,9 +1,7 @@
 package com.example.doorboxbe.domain.dataset.repository;
 
-
+import com.example.doorboxbe.domain.dataset.entity.Dataset;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.xml.crypto.Data;
-
-public interface DatasetRepository extends JpaRepository<Data, Long> {
+public interface DatasetRepository extends JpaRepository<Dataset, Long> {
 }

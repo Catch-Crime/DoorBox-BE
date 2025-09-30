@@ -39,8 +39,8 @@ public class DatasetResponseDTO {
 
         public static PhotoDetectionResponse toPhotoDetectionResponse(Dataset dataset) {
             return PhotoDetectionResponse.builder()
-                    .day(dataset.getDay())
-                    .time(dataset.getTime())
+                    .day(dataset.getDay().toString())
+                    .time(dataset.getTime().toString())
                     .emotion(dataset.getEmotion())
                     .hasAccessory(dataset.getHasAccessory())
                     .gender(dataset.getGender())
